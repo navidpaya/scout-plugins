@@ -1,3 +1,4 @@
+# Author: Navid Paya <me@navidpaya.com>
 # This plguins relies on the check_openmanage executable to be placed
 # in /usr/local/bin. Grab it from here:
 # http://folk.uio.no/trondham/software/check_openmanage.html

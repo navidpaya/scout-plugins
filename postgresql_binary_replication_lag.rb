@@ -1,3 +1,4 @@
+# Author: Kaveh Mousavi Zamani <kavehmz@gmail.com>
 # This is plugin to return a huge lag if you add it
 # to a master PostgreSQL instance by mistake. It monitors
 # the last replayed transaction on the slave which is good
