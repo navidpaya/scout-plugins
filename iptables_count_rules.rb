@@ -1,4 +1,5 @@
-#This plugins counts the iptables rules and reports it to the scout.
+# Author: Sayed M. Mahdi Sadrnezhaad <smmsadr@gmail.com>
+# This plugins counts the iptables rules and reports it to the scout.
 
 class IPtables < Scout::Plugin
 
