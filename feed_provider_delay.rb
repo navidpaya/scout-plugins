@@ -10,7 +10,7 @@ class FeedProviderDelapy < Scout::Plugin
     provider_list = JSON.parse(`/usr/bin/bom_provider_delay.pm --list-used-providers`)
     provider_list.each do |v|
      provider_lag = `/usr/bin/bom_provider_delay.pm #{v}`
-         report(:provider => v , :lag => provider_lag)
+         report("Delay for #{v}" => provider_lag)
     end
   end
 
