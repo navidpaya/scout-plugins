@@ -5,9 +5,14 @@
 
 class CheckTimeZone < Scout::Plugin
 
+  OPTIONS=<<-EOS
+    timezone:
+      name: The timezone to check for
+  EOS
+
   def status()
       current = `date +"%Z"`.chomp
-      expected = "UTC"
+      expected = option(:timezone)
       if current != expected
           return 1
       else
