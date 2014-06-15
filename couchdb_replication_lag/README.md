@@ -1,4 +1,5 @@
-## Author: Navid Paya <me@navidpaya.com>             
+Find the source code visit <https://github.com/navidpaya/scout-plugins>.
+# Ruby Dependencies
 This plguins needs the 'json' gem to be installed.                                               
 On Debian, the package is called ruby-json.       
 On CentOS, you need to install it manually.
