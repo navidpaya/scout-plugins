@@ -1,8 +1,3 @@
-# Author: Navid Paya <me@navidpaya.com>
-# This plguins needs the 'json' gem to be installed.
-# On Debian, the package is called ruby-json.
-# On CentOS, you need to install it manually.
-
 class CouchDBReplicationLag < Scout::Plugin
   needs 'json'
 
@@ -13,6 +8,8 @@ class CouchDBReplicationLag < Scout::Plugin
       name: Username on the master
     password:
       name: Password on the master
+    document:
+      name: Document to be monitored for lag
   EOS
 
   def build_report
@@ -22,8 +19,8 @@ class CouchDBReplicationLag < Scout::Plugin
   end
 
   def calculate_lag(db)
-    parsed_master_message = JSON.parse(`curl -s -k  https://'#{option(:username)}':'#{option(:password)}'@'#{option(:master)}':6984/#{db}/snmp_replication_doc`)
-    parsed_slave_message = JSON.parse(`curl -s -k http://localhost:5984/#{db}/snmp_replication_doc`)
+    parsed_master_message = JSON.parse(`curl -s -k  https://'#{option(:username)}':'#{option(:password)}'@'#{option(:master)}':6984/#{db}/#{option(:document)}`)
+    parsed_slave_message = JSON.parse(`curl -s -k http://localhost:5984/#{db}/#{option(:document)}`)
     master_timestap = parsed_master_message["write_time"]
     slave_timestamp = parsed_slave_message["write_time"]
     return (master_timestap.to_i - slave_timestamp.to_i)
